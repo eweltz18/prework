@@ -84,7 +84,9 @@ Say I have a matrix *A* which is *n* x *p* and a matrix *B* which is *p* x *d*.
 
 6. Suppose I also have a *d*-dimensional vector *y*, and I want to compute the
 product *z = ABy*. Under what circumstances should I compute *AB* first?
-When should I compute *By* first? Big-*O* notation might be useful.
+When should I compute *By* first? Your answer should be in terms of the 
+number of multiplications you need to make in the two cases.
+Big-*O* notation might be useful.
 
 7. Now suppose I have *k* different *d*-dimensional vectors
 *y*<sub>1</sub>,..., *y*<sub>k</sub> and I want to compute all of the products
