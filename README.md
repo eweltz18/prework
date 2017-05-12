@@ -12,10 +12,10 @@ near the top of the page.
 ## Deliverables
 
 1. Copy `README.md` (this file) to a file called `readings.md`. Add answers
-(right after the question text) to questions 4, 5, 6, 7, and 9 from Part I.
-All answers should be three sentences or less, and none require
+(right after the question text) to questions 4 and 5 from Part I.
+Both answers should be three sentences or fewer, and neither requires
 equations (maybe some multiplication).
-2. Add solutions to `exercises.py` as described in questions 2, 3, and 8 from
+2. Add solutions to `exercises.py` as described in questions 3 and 6 from
 Part I. You can run tests for each question by running `python exercises.py N`
 from the command line, replacing `N` with the question number.
 3. Complete Part II in `logistic_regression.py`, and run the model as
@@ -30,29 +30,12 @@ And that's it! Good luck on your first assignment.
 
 ## Part I: Reading response questions
 
-#### Python
+#### Python and NumPy
 
 1. Write PEP 8-compliant code for this assignment.
-2. Use a dictionary comprehension to complete the function
+2. Write NumPy vectorized code in Part II when needed.
+3. Use a dictionary comprehension to complete the function
 `list_to_index_map(...)` in `exercises.py`.
-
-#### NumPy
-
-3. Write a vectorized version of the code snippet below as `vectorized(...)`
-in `exercises.py`.
-
-```python
-import numpy as np
-
-X = []
-for _ in xrange(10):
-    row = np.zeros(5)
-    if np.random.rand() > 0.5:
-        for i in xrange(len(row)):
-            row[i] = 1
-    X.append(row)
-X = np.vstack(X)
-```
 
 #### Basics of machine learning
 
@@ -67,36 +50,21 @@ idea. Look up **overfitting** on the world wide web. This is an essential
 concept in machine learning. Give one way to prevent overfitting involving the
 number of training epochs *m*.
 
-5. In Part II, we discuss classification with logistic regression.
-I just had a great idea! Instead of using this weird logistic loss function,
-let's just use 0-1 loss (given below) to train our model. Afterall, that's the exact
-metric I want my classifier to be optimized for. Spoiler: this isn't a great idea. Why not?
-
-<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\ell(\theta)&space;=&space;\left\lbrace\begin{array}{ll}&space;0&space;&&space;\text{sign}(\theta^Tx^{(i)})&space;=&space;y^{(i)}&space;\\&space;1&space;&&space;\text{o.w.}&space;\end{array}&space;\right." target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\ell(\theta)&space;=&space;\left\lbrace\begin{array}{ll}&space;0&space;&&space;\text{sign}(\theta^Tx^{(i)})&space;=&space;y^{(i)}&space;\\&space;1&space;&&space;\text{o.w.}&space;\end{array}&space;\right." title="\ell(\theta) = \left\lbrace\begin{array}{ll} 0 & \text{sign}(\theta^Tx^{(i)}) = y^{(i)} \\ 1 & \text{o.w.} \end{array} \right." /></a>
-
-(Here, we'll assume our labels are -1's and +1's, instead of 0's and 1's).
-
 #### Linear algebra for machine learning
 
 [CS229 linear algebra notes](http://cs229.stanford.edu/section/cs229-linalg.pdf)
 
-Say I have a matrix *A* which is *n* x *p* and a matrix *B* which is *p* x *d*.
 
-6. Suppose I also have a *d*-dimensional vector *y*, and I want to compute the
+
+5. Say I have a matrix *A* which is *n* x *p*, a matrix *B* which is *p* x *d*,
+and a *d*-dimensional vector *y*. I want to compute the
 product *z = ABy*. Under what circumstances should I compute *AB* first?
 When should I compute *By* first? Your answer should be in terms of the 
 number of multiplications you need to make in the two cases.
-Big-*O* notation might be useful.
-
-7. Now suppose I have *k* different *d*-dimensional vectors
-*y*<sub>1</sub>,..., *y*<sub>k</sub> and I want to compute all of the products
-*z*<sub>i</sub> = *ABy*<sub>i</sub> for *i*=1,...,*k*.
-Under what circumstances should I precompute *AB* before computing the
-products *z*<sub>i</sub>?
 
 #### TensorFlow
 
-8. The **softmax** function is given in equation (8) of Section III.9.3 in the
+6. The **softmax** function is given in equation (8) of Section III.9.3 in the
 [CS229 intro notes](http://cs229.stanford.edu/notes/cs229-notes1.pdf).
 It's an important function in machine learning, so TensorFlow implements it in
 `tf.nn.softmax(...)`. But unfortunately someone pushed a bad change to 
@@ -116,15 +84,6 @@ theta = tf.get_variable('theta', (d, n_classes), dtype=tf.float32)
 h = tf.matmul(X, theta)
 predictions = softmax(h)
 ```
-
-9. TensorFlow uses **automatic differentiation** (autodiff) in order to
-train complex machine learning models with gradient descent using an algorithm
-called **backpropagation** (which we'll learn more about later).
-TensorFlow uses a type of autodiff called **symbolic differentiation** in which
-every operator knows its own gradient. There's another type of autodiff called
-**numerical differentiation**. Look up symbolic and numerical differentiation
-on the world wide web. Describe one advantage and one disadvantage for each.
-Why did TensorFlow go with symbolic differentiation?
 
 ## Part II: Sentiment analysis warmup
 

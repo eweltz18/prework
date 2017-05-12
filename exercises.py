@@ -27,49 +27,6 @@ def list_to_index_map_test():
     print "TEST PASSED!"
 
 
-def vectorized():
-    """Implements the code snippet below in a vectorized fashion
-
-    ```
-    X = []
-    for _ in xrange(10):
-        row = np.zeros(5)
-        if np.random.rand() > 0.5:
-            for i in xrange(len(row)):
-                row[i] = 1
-        X.append(row)
-    X = np.vstack(X)
-    ```
-
-    Args: None
-
-    Lines: 3-4
-
-    Returns: a 2D NumPy array (X in the snippet)
-    """
-    raise NotImplementedError()
-
-
-def vectorized_test():
-    def slow():
-        X = []
-        for _ in xrange(10):
-            row = np.zeros(5)
-            if np.random.rand() > 0.5:
-                for i in xrange(len(row)):
-                    row[i] = 1
-            X.append(row)
-        X = np.vstack(X)    
-        return X
-    np.random.seed(1701)
-    X_slow = slow()
-    np.random.seed(1701)
-    X_fast = vectorized()
-    if not np.array_equal(X_slow, X_fast):
-        raise Exception("TEST FAILED!\n\n{0}\n\n{1}".format(X_slow, X_fast))
-    print "TEST PASSED!"
-
-
 def softmax(h):
     """Computes the softmax function
 
@@ -99,11 +56,9 @@ if __name__ == '__main__':
     if len(sys.argv) < 2:
         raise Exception("No problem number provided")
     N = sys.argv[1]
-    if N == '2':
+    if N == '3':
         list_to_index_map_test()
-    elif N == '3':
-        vectorized_test()
-    elif N == '8':
+    elif N == '6':
         softmax_test()
     else:
-        raise Exception("No problem <{0}>. Options: [2, 3, 8]".format(N))
+        raise Exception("No problem <{0}>. Options: [3, 6]".format(N))
