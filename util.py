@@ -29,7 +29,7 @@ def read_data(fname):
     Returns: list of sentences, NumPy array of labels
     """
     text, y = [], []
-    with open(fname, 'rb') as f:
+    with open(fname, 'r', encoding='ISO-8859-1') as f:
         for line in f:
             label, s = line.strip().split(' ', 1)
             text.append(s)
@@ -56,7 +56,7 @@ class SymbolTable(object):
         Returns: a NumPy vector of counts for each entry in vocabulary
         """
         x = np.zeros(len(self.v))
-        sentence_filtered = filter(lambda x: x[0] in self.v, sentence.items())
+        sentence_filtered = [x for x in sentence.items() if x[0] in self.v]
         if len(sentence_filtered) == 0:
             return x
         keys, cts = zip(*sentence_filtered)
@@ -100,8 +100,8 @@ def words_to_ngrams(sentence, n, f):
         ngrams should be represented as tuples of words (including unigrams)
     """
     n = len(sentence)
-    return [tuple(sentence[i:j]) for i in xrange(n)
-        for j in xrange(i+1, min(i+n+1, n)) if f(sentence[i:j])]
+    return [tuple(sentence[i:j]) for i in range(n)
+        for j in range(i+1, min(i+n+1, n)) if f(sentence[i:j])]
 
 
 def sentence_to_ngram_counts(sentence, n=2, f=default_filter):

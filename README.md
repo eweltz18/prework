@@ -16,7 +16,7 @@ near the top of the page.
 Both answers should be three sentences or fewer, and neither requires
 equations (maybe some multiplication).
 2. Add solutions to `exercises.py` as described in questions 3 and 6 from
-Part I. You can run tests for each question by running `python exercises.py N`
+Part I. You can run (non-exhaustive) tests for each question by running `python exercises.py N`
 from the command line, replacing `N` with the question number.
 3. Complete Part II in `logistic_regression.py`, and run the model as
 described.

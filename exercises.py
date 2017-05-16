@@ -24,7 +24,7 @@ def list_to_index_map_test():
             raise Exception("TEST FAILED! d[{0}] = {1}\tx[{2}] = {0}".format(
                 j, d[j], x.index(j)
             ))
-    print "TEST PASSED!"
+    print("TEST PASSED!")
 
 
 def softmax(h):
@@ -49,7 +49,7 @@ def softmax_test():
     X_tf, X_mn = tf.Session().run([tf.nn.softmax(X), softmax(X)])
     if not np.allclose(X_tf, X_mn):
         raise Exception("TEST FAILED!\n\n{0}\n\n{1}".format(X_tf, X_mn))
-    print "TEST PASSED!"
+    print("TEST PASSED!")
 
 
 if __name__ == '__main__':

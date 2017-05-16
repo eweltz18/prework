@@ -1,6 +1,6 @@
-import cPickle
-import sys
 import numpy as np
+import pickle
+import sys
 
 from logistic_regression import LogisticRegression, TFLogisticRegression
 from util import read_data, sentence_to_ngram_counts, SymbolTable
@@ -26,7 +26,7 @@ if __name__ == '__main__':
     is_tf = (len(sys.argv) > 1 and sys.argv[1] == 'tf')
     # Create symbol table
     with open('data/vocab.pkl', 'rb') as f:
-        vocab = cPickle.load(f)
+        vocab = pickle.load(f)
     symbol_table = SymbolTable(vocab)
     # Process train data
     X_train, y_train = load_data('data/train.txt', symbol_table)
@@ -37,13 +37,13 @@ if __name__ == '__main__':
         model = LogisticRegression(X_train.shape[1])
     model.train(X_train, y_train)
     train_acc = model.accuracy(X_train, y_train)
-    print "Training accuracy: {0:.2f}%".format(100. * train_acc)
+    print("Training accuracy: {0:.2f}%".format(100. * train_acc))
     # Get test data
     X_test, y_test = load_data('data/test.txt', symbol_table)
     # Get test accuracy
     test_acc = model.accuracy(X_test, y_test)
-    print "Test accuracy: {0:.2f}%".format(100. * test_acc)
+    print("Test accuracy: {0:.2f}%".format(100. * test_acc))
     # Save predictions
     test_pred = model.predict(X_test)
     with open('pred' + '_tf'*is_tf + '.pkl', 'wb') as f:
-        cPickle.dump(test_pred, f)
+        pickle.dump(test_pred, f)
