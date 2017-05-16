@@ -35,6 +35,9 @@ class LogisticRegressionBase(object):
     def train(self, X, y, lr=0.5, n_epochs=10, batch_size=10, seed=1701):
         """Train a logistic regression model
 
+        ** IMPLEMENT ME! **
+        NOTE: THIS IS THE ONLY FUNCTION YOU HAVE TO IMPLEMENT
+
         Args:
             X: training data matrix (2D NumPy array)
             y: training data labels (NumPy vector)
