@@ -164,7 +164,7 @@ graph and updates the weights with gradient descent
 #### Completing the implementation and running the model
 
 All that we have to do is implement a simple minibatch SGD training loop in
-`LogisticRegression.train(...)`. This will let us train both the NumPy and 
+`LogisticRegressionBase.train(...)`. This will let us train both the NumPy and 
 TensorFlow models. Implement the pseudo-code algorithm below, which is a
 standard SGD algorithm like we saw at the end of Section I.1 in the
 [CS229 intro notes](http://cs229.stanford.edu/notes/cs229-notes1.pdf).
